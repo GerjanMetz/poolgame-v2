@@ -11,6 +11,7 @@ class Core {
         this.events = new Events();
         this.utils = new Utils();
         this.static = new Static();
+        this.player1 = new Player();
 
         // setup renderer
         this.renderer = new THREE.WebGLRenderer();
