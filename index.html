@@ -10,19 +10,24 @@
 </head>
 <body>
 
+<script src="./js/core.js"></script>
 <script src="./js/three.js"></script>
 <script src="./js/events.js"></script>
 <script src="./js/physics.js"></script>
-<script src="js/world.js"></script>
+<script src="./js/world.js"></script>
 <script src="./js/static.js"></script>
 <script src="./js/ui.js"></script>
 <script src="./js/utils.js"></script>
-<script src="./js/core.js"></script>
+<script src="./js/orbitControls.js"></script>
 
 <script>
+    var gameCore;
     window.onload = function () {
-        let gameCore = new Core();
+        console.log("onload");
+        gameCore = new Core();
+        gameCore.gameLoop();
     };
+
 </script>
 </body>
 </html>
