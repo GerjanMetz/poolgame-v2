@@ -17,7 +17,7 @@ class Ball extends THREE.Mesh{
         this.receiveShadow = true;
         this.castShadow = true;
 
-        scene.add(this);
+        gameCore.scene.add(this);
     }
 
     get GetXSpeed() {

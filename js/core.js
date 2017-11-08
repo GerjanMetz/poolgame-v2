@@ -1,18 +1,9 @@
 class Core {
     constructor(){
         console.log("core constructor");
-        this.init();
     }
 
     init() {
-        this.ui = new UI();
-        this.physics = new Physics();
-        this.world = new World;
-        this.events = new Events();
-        this.utils = new Utils();
-        this.static = new Static();
-        this.player1 = new Player();
-
         // setup renderer
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -24,10 +15,15 @@ class Core {
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.clock = new THREE.Clock();
 
-        let boxGeo = new THREE.BoxGeometry(1, 1, 1);
-        let boxMat = new THREE.MeshPhongMaterial();
-        this.boxMesh = new THREE.Mesh(boxGeo, boxMat);
-        this.scene.add(this.boxMesh);
+        this.ui = new UI();
+        this.physics = new Physics();
+        this.events = new Events();
+        this.utils = new Utils();
+        this.static = new Static();
+        this.player1 = new Player();
+        this.world = new World;
+
+        // this.table = new Table();
 
         let light = new THREE.PointLight( 0xffffff, 1, 100 );
         light.position.set(1,3,1);
@@ -36,8 +32,7 @@ class Core {
         this.camera.position.x = 0;
         this.camera.position.y = 2.5;
         this.camera.position.z = 0;
-        this.camera.lookAt(this.boxMesh.position);
-
+        this.camera.lookAt(this.world.table.bed.position);
     }
 
     gameLoop() {

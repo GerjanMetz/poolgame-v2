@@ -11,22 +11,32 @@
 <body>
 
 <script src="./js/three.js"></script>
+<script src="./js/orbitControls.js"></script>
+
+<script src="./js/ball.js"></script>
 <script src="./js/events.js"></script>
 <script src="./js/physics.js"></script>
-<script src="./js/world.js"></script>
+<script src="./js/player.js"></script>
 <script src="./js/static.js"></script>
+<script src="./js/table.js"></script>
 <script src="./js/ui.js"></script>
 <script src="./js/utils.js"></script>
-<script src="./js/orbitControls.js"></script>
-<script src="./js/player.js"></script>
+<script src="./js/world.js"></script>
 <script src="./js/core.js"></script>
 
 
 <script>
     var gameCore;
+
+    // when everything is loaded
     window.onload = function () {
         console.log("onload");
+
+        // initialize the game
         gameCore = new Core();
+        gameCore.init();
+
+        // start the gameloop
         gameCore.gameLoop();
     };
 </script>
