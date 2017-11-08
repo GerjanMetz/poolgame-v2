@@ -11,9 +11,20 @@ class Events {
             gameCore.renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        window.addEventListener('click', () => {
+        window.addEventListener('click', (e) => {
             console.log("onclick");
-            gameCore.physics.shootBall();
+            console.log("X: " + e.clientX);
+            console.log("Y: " + e.clientY);
+
+            let mouseXOffset = window.innerWidth / 2;
+            let mouseYOffset = window.innerHeight / 2;
+
+            console.log("offsetX: " + (e.clientX - mouseXOffset));
+            console.log("offsetY: " + (e.clientY - mouseYOffset));
+
+
+
+            gameCore.physics.shootBall(e.clientX - mouseXOffset, e.clientY - mouseYOffset);
         });
     }
 }

@@ -39,7 +39,9 @@ class Core {
         // request
         requestAnimationFrame( window.gameCore.gameLoop );
         gameCore.renderer.render(gameCore.scene, gameCore.camera);
+
         // update physics
+        gameCore.physics.update();
         // render scene
     }
 }

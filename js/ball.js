@@ -6,8 +6,8 @@ class Ball extends THREE.Mesh{
         let ballMaterial = new THREE.MeshPhongMaterial({ });
         super(ballGeometry, ballMaterial);
 
-        this.xSpeed = 0.0;
-        this.zSpeed = 0.0;
+        this.speedX = 0.0;
+        this.speedZ = 0.0;
         this.mass = 1;
         this.Colliding = false;
 
@@ -20,20 +20,20 @@ class Ball extends THREE.Mesh{
         gameCore.scene.add(this);
     }
 
-    get GetXSpeed() {
-        return this.xSpeed;
+    get GetSpeedX() {
+        return this.speedX;
     }
 
-    get GetZSpeed() {
-        return this.zSpeed;
+    get GetSpeedZ() {
+        return this.speedZ;
     }
 
     get GetVelocity() {
-        return Math.sqrt(this.xSpeed * this.xSpeed +  this.zSpeed * this.zSpeed);
+        return Math.sqrt(this.speedX * this.speedX + this.speedZ * this.speedZ);
     }
 
     get GetDirection() {
-        return Math.atan2(this.zSpeed, this.xSpeed);
+        return Math.atan2(this.speedZ, this.speedX);
     }
 
     get GetMass() {
@@ -52,12 +52,12 @@ class Ball extends THREE.Mesh{
         return this.oldPosZ;
     }
 
-    set SetXSpeed(value){
-        this.xSpeed = value;
+    set SetSpeedX(value){
+        this.speedX = value;
     }
 
-    set SetZSpeed(value){
-        this.zSpeed = value;
+    set SetSpeedZ(value){
+        this.speedZ = value;
     }
 
     set isColliding(value) {
