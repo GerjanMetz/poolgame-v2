@@ -1,9 +1,8 @@
-/**
- * Created by Gerjan on 8-10-2017.
- */
 class Ball extends THREE.Mesh{
     constructor(){
-        let ballGeometry = new THREE.SphereGeometry(ballRadius);
+        console.log("ball constructor");
+
+        let ballGeometry = new THREE.SphereGeometry(gameCore.static.ballRadius);
         let ballMaterial = new THREE.MeshPhongMaterial({ });
         super(ballGeometry, ballMaterial);
 
