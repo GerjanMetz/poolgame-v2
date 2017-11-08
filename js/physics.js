@@ -13,6 +13,8 @@ class Physics {
 
         gameCore.world.ball.position.x += gameCore.world.ball.GetSpeedX * delta;
         gameCore.world.ball.position.z += gameCore.world.ball.GetSpeedZ * delta;
+
+        this.wallCollision();
     }
 
     shootBall(mouseX, mouseZ) {
@@ -21,46 +23,46 @@ class Physics {
     }
 
     wallCollision() {
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallTop.position.z - balls[i].position.z) &&
-            Math.abs(wallTop.position.x - balls[i].position.x) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallTop.position.z - gameCore.world.ball.position.z) &&
+            Math.abs(gameCore.world.table.wallTop.position.x - gameCore.world.ball.position.x) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.z += -0.01;
-            balls[i].SetZSpeed = balls[i].GetZSpeed * -1;
+            gameCore.world.ball.position.z += -0.01;
+            gameCore.world.ball.SetSpeedZ = gameCore.world.ball.GetSpeedZ * -1;
         }
 
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallTopLeft.position.x - balls[i].position.x) &&
-            Math.abs(wallTopLeft.position.z - balls[i].position.z) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallTopLeft.position.x - gameCore.world.ball.position.x) &&
+            Math.abs(gameCore.world.table.wallTopLeft.position.z - gameCore.world.ball.position.z) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.x += -0.01;
-            balls[i].SetXSpeed = balls[i].GetXSpeed * -1;
+            gameCore.world.ball.position.x += -0.01;
+            gameCore.world.ball.SetSpeedX = gameCore.world.ball.GetSpeedX * -1;
         }
 
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallTopRight.position.x - balls[i].position.x) &&
-            Math.abs(wallTopRight.position.z - balls[i].position.z) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallTopRight.position.x - gameCore.world.ball.position.x) &&
+            Math.abs(gameCore.world.table.wallTopRight.position.z - gameCore.world.ball.position.z) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.x += 0.01;
-            balls[i].SetXSpeed = balls[i].GetXSpeed * -1;
+            gameCore.world.ball.position.x += 0.01;
+            gameCore.world.ball.SetSpeedX = gameCore.world.ball.GetSpeedX * -1;
         }
 
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallLowerLeft.position.x - balls[i].position.x) &&
-            Math.abs(wallLowerLeft.position.z - balls[i].position.z) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallLowerLeft.position.x - gameCore.world.ball.position.x) &&
+            Math.abs(gameCore.world.table.wallLowerLeft.position.z - gameCore.world.ball.position.z) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.x += -0.01;
-            balls[i].SetXSpeed = balls[i].GetXSpeed * -1;
+            gameCore.world.ball.position.x += -0.01;
+            gameCore.world.ball.SetSpeedX = gameCore.world.ball.GetSpeedX * -1;
         }
 
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallLowerRight.position.x - balls[i].position.x) &&
-            Math.abs(wallLowerRight.position.z - balls[i].position.z) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallLowerRight.position.x - gameCore.world.ball.position.x) &&
+            Math.abs(gameCore.world.table.wallLowerRight.position.z - gameCore.world.ball.position.z) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.x += 0.01;
-            balls[i].SetXSpeed = balls[i].GetXSpeed * -1;
+            gameCore.world.ball.position.x += 0.01;
+            gameCore.world.ball.SetSpeedX = gameCore.world.ball.GetSpeedX * -1;
         }
 
-        if (wallBodyDepth / 2 + ballRadius >= Math.abs(wallBottom.position.z - balls[i].position.z) &&
-            Math.abs(wallBottom.position.x - balls[i].position.x) < wallBodyWidth / 2 + ballRadius)
+        if (gameCore.static.wallBodyDepth / 2 + gameCore.static.ballRadius >= Math.abs(gameCore.world.table.wallBottom.position.z - gameCore.world.ball.position.z) &&
+            Math.abs(gameCore.world.table.wallBottom.position.x - gameCore.world.ball.position.x) < gameCore.static.wallBodyWidth / 2 + gameCore.static.ballRadius)
         {
-            balls[i].position.z += 0.01;
-            balls[i].SetZSpeed = balls[i].GetZSpeed * -1;
+            gameCore.world.ball.position.z += 0.01;
+            gameCore.world.ball.SetSpeedZ = gameCore.world.ball.GetSpeedZ * -1;
         }
 
     }
