@@ -37,6 +37,7 @@ class Core {
         this.camera.position.y = 2.5;
         this.camera.position.z = 0;
         this.camera.lookAt(this.boxMesh.position);
+
     }
 
     gameLoop() {
