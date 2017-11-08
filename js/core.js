@@ -25,9 +25,13 @@ class Core {
         this.clock = new THREE.Clock();
 
         let boxGeo = new THREE.BoxGeometry(1, 1, 1);
-        let boxMat = new THREE.MeshBasicMaterial();
+        let boxMat = new THREE.MeshPhongMaterial();
         this.boxMesh = new THREE.Mesh(boxGeo, boxMat);
         this.scene.add(this.boxMesh);
+
+        let light = new THREE.PointLight( 0xffffff, 1, 100 );
+        light.position.set(1,3,1);
+        this.scene.add(light);
 
         this.camera.position.x = 0;
         this.camera.position.y = 2.5;
