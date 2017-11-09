@@ -25,5 +25,8 @@ class Static {
 
         // add ball radius
         this.ballRadius = 0.054;
+
+        // how many balls in game
+        this.amountBalls = 16;
     }
 }

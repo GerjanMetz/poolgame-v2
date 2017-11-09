@@ -12,4 +12,8 @@ class Utils {
         let sum = dxSquared + dySquared;
         return Math.sqrt(sum);
     }
+
+    calcOldDistance(object1, object2) {
+        return Math.sqrt(Math.pow(object1.GetOldX - object2.GetOldX, 2) + Math.pow(object1.GetOldZ - object2.GetOldZ, 2));
+    }
 }
