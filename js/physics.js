@@ -16,12 +16,26 @@ class Physics {
             gameCore.world.balls[i].position.x += gameCore.world.balls[i].GetSpeedX * delta;
             gameCore.world.balls[i].position.z += gameCore.world.balls[i].GetSpeedZ * delta;
 
-            if(gameCore.world.balls[i].GetVelocity > 0.001){
+
+            if (gameCore.world.balls[i].GetVelocity > 0.0005) {
                 gameCore.world.balls[i].SetSpeedX = gameCore.world.balls[i].GetSpeedX * 0.99;
                 gameCore.world.balls[i].SetSpeedZ = gameCore.world.balls[i].GetSpeedZ * 0.99;
+            } else if (gameCore.world.balls[i].GetVelocity === 0) {
+                // console.log("balls stopped");
             } else {
+                // console.log("stopping balls");
                 gameCore.world.balls[i].SetSpeedX = 0;
                 gameCore.world.balls[i].SetSpeedZ = 0;
+
+                let totalVelocity = 0;
+
+                for (let j = 0; j < gameCore.static.amountBalls; j++){
+                    totalVelocity += gameCore.world.balls[j].GetVelocity;
+                }
+
+                if (totalVelocity === 0) {
+                    window.dispatchEvent(new Event('endTurn'));
+                }
             }
         }
 
@@ -131,5 +145,4 @@ class Physics {
             }
         }
     }
-
 }

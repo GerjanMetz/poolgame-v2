@@ -22,9 +22,11 @@ class Events {
             console.log("offsetX: " + (e.clientX - mouseXOffset));
             console.log("offsetY: " + (e.clientY - mouseYOffset));
 
-
-
             gameCore.physics.shootBall(e.clientX - mouseXOffset, e.clientY - mouseYOffset);
+        });
+
+        window.addEventListener('endTurn', () => {
+            console.log("endTurn");
         });
     }
 }

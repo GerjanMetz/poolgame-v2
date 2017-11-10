@@ -7,9 +7,6 @@ class World {
         this.table = new Table();
         this.createBalls(gameCore.static.amountBalls);
         this.setupBalls();
-        // this.ball = new Ball();
-
-        // this.ball.position.y = this.table.bed.position.y + gameCore.static.bedHeight / 2 + gameCore.static.ballRadius;
     }
 
     createBalls(amountBalls) {
@@ -18,8 +15,12 @@ class World {
             this.balls[i].position.z = (gameCore.static.bedDepth / 3) * -1 + (i * 0.13);
             this.balls[i].position.y = (gameCore.static.bedHeight / 2 + gameCore.static.ballRadius);
 
+            this.balls[i].material.color.setHex(0xdd0000);
+
             gameCore.scene.add(this.balls[i]);
         }
+        this.balls[0].material.color.setHex(0xdddddd);
+
     }
 
     setupBalls() {
