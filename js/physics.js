@@ -16,6 +16,13 @@ class Physics {
             gameCore.world.balls[i].position.x += gameCore.world.balls[i].GetSpeedX * delta;
             gameCore.world.balls[i].position.z += gameCore.world.balls[i].GetSpeedZ * delta;
 
+            if(gameCore.world.balls[i].GetVelocity > 0.001){
+                gameCore.world.balls[i].SetSpeedX = gameCore.world.balls[i].GetSpeedX * 0.99;
+                gameCore.world.balls[i].SetSpeedZ = gameCore.world.balls[i].GetSpeedZ * 0.99;
+            } else {
+                gameCore.world.balls[i].SetSpeedX = 0;
+                gameCore.world.balls[i].SetSpeedZ = 0;
+            }
         }
 
         this.wallCollision();
@@ -23,14 +30,15 @@ class Physics {
     }
 
     shootBall(mouseX, mouseZ) {
-        for (let i = 0; i < gameCore.static.amountBalls; i++) {
-            gameCore.world.balls[i].SetSpeedX = Math.random() * 0.01;
-            gameCore.world.balls[i].SetSpeedZ = Math.random() * 0.01;
-
-
-            // gameCore.world.balls[i].SetSpeedX = (gameCore.world.balls[i].position.x - mouseX) * 0.0001;
-            // gameCore.world.balls[i].SetSpeedZ = (gameCore.world.balls[i].position.z - mouseZ) * 0.0001;
-        }
+        // for (let i = 0; i < gameCore.static.amountBalls; i++) {
+        //     gameCore.world.balls[i].SetSpeedX = Math.random() * 0.01;
+        //     gameCore.world.balls[i].SetSpeedZ = Math.random() * 0.01;
+        //
+        //
+        //     // gameCore.world.balls[i].SetSpeedX = (gameCore.world.balls[i].position.x - mouseX) * 0.0001;
+        //     // gameCore.world.balls[i].SetSpeedZ = (gameCore.world.balls[i].position.z - mouseZ) * 0.0001;
+        // }
+        gameCore.world.balls[0].SetSpeedZ = 0.01;
     }
 
     wallCollision() {
