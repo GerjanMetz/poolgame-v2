@@ -20,6 +20,11 @@ class Static {
         this.wallCubeWidth = 0.141421356;
         this.wallCubeHeight = 0.2;
 
+        // add cue dimensions
+        this.cueTip = 0.005;
+        this.cueButt = 0.015;
+        this.cueLength = 1.5;
+
         // add pocket position offset
         this.pocketPosY = -0.01;
 

@@ -21,7 +21,9 @@ class Core {
         this.utils = new Utils();
         this.static = new Static();
         this.player1 = new Player();
-        this.world = new World;
+        this.world = new World();
+
+        this.world.cue.pointAt(this.world.balls[0]);
 
         // this.table = new Table();
 
@@ -31,8 +33,10 @@ class Core {
 
         this.camera.position.x = 0;
         this.camera.position.y = 2.5;
-        this.camera.position.z = 0;
+        this.camera.position.z = -0.00001;
         this.camera.lookAt(this.world.table.bed.position);
+
+        // this.camera.rotation.z  = Math.PI;
     }
 
     gameLoop() {
