@@ -23,9 +23,8 @@ class Core {
         this.player1 = new Player();
         this.world = new World();
 
-        this.world.cue.pointAt(this.world.balls[1]);
+        gameCore.world.cue.initPos(gameCore.world.balls[1]);
 
-        // this.table = new Table();
 
         let light = new THREE.PointLight( 0xffffff, 1, 100 );
         light.position.set(1,3,1);
@@ -36,7 +35,17 @@ class Core {
         this.camera.position.z = -0.00001;
         this.camera.lookAt(this.world.table.bed.position);
 
-        // this.camera.rotation.z  = Math.PI;
+
+
+        this.tempSetup();
+    }
+
+    tempSetup() {
+        gameCore.world.balls[0].position.x = 0;
+        gameCore.world.balls[0].position.z = 0;
+
+        gameCore.world.cue.position.x = 0;
+        gameCore.world.cue.position.z = - 0.9;
     }
 
     gameLoop() {
