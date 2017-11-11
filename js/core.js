@@ -23,7 +23,7 @@ class Core {
         this.player1 = new Player();
         this.world = new World();
 
-        this.world.cue.pointAt(this.world.balls[0]);
+        this.world.cue.pointAt(this.world.balls[1]);
 
         // this.table = new Table();
 

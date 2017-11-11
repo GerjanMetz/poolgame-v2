@@ -28,6 +28,11 @@ class Events {
             gameCore.world.balls[0].SetSpeedZ = 0.08;
         });
 
+        window.addEventListener('mousemove', (event) => {
+            console.log("mouseX: ", event.clientX);
+            console.log("mouseY: ", event.clientY);
+        });
+
         window.addEventListener('endTurn', () => {
             console.log("endTurn");
         });
