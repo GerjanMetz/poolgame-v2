@@ -5,6 +5,7 @@ class World {
         this.balls = [];
 
         this.table = new Table();
+        this.cue = new Cue();
         this.createBalls(gameCore.static.amountBalls);
         this.setupBalls();
     }

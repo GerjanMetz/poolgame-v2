@@ -10,13 +10,16 @@ class Physics {
         if(delta > 16.6) { delta = 16 }
 
         for (let i = 0; i < gameCore.static.amountBalls; i++) {
+            // set current position for collision calculations
             gameCore.world.balls[i].SetOldX = gameCore.world.balls[i].position.x;
             gameCore.world.balls[i].SetOldZ = gameCore.world.balls[i].position.z;
 
+            // set new position
             gameCore.world.balls[i].position.x += gameCore.world.balls[i].GetSpeedX * delta;
             gameCore.world.balls[i].position.z += gameCore.world.balls[i].GetSpeedZ * delta;
 
 
+            // reduce velocity
             if (gameCore.world.balls[i].GetVelocity > 0.0005) {
                 gameCore.world.balls[i].SetSpeedX = gameCore.world.balls[i].GetSpeedX * 0.99;
                 gameCore.world.balls[i].SetSpeedZ = gameCore.world.balls[i].GetSpeedZ * 0.99;
@@ -24,6 +27,8 @@ class Physics {
                 // console.log("balls stopped");
             } else {
                 // console.log("stopping balls");
+
+                // set velocity to 0
                 gameCore.world.balls[i].SetSpeedX = 0;
                 gameCore.world.balls[i].SetSpeedZ = 0;
 
