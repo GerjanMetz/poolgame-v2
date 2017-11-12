@@ -3,6 +3,7 @@ class Events {
         console.log("events constructor");
 
         this.angle = 180;
+        this.flipCurrentTurn = false;
 
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
         gameCore.controls.mouseButtons.PAN = null;
@@ -55,6 +56,9 @@ class Events {
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
 
             this.angle = 180;
+
+            if (this.flipCurrentTurn) { gameCore.flipCurrentTurn() }
+
             gameCore.world.cue.visible = true;
             gameCore.inAnimation = false;
         });
@@ -64,8 +68,18 @@ class Events {
             console.log(event);
 
 
-            if (gameCore.player1.color === undefined) {
-                console.log("UNDEFINED");
+            if (gameCore.currentTurn.color === undefined) {
+                console.log("COLOR UNDEFINED");
+                let otherColor;
+                if (event.detail.color === "full") { otherColor = "half" } else { otherColor = "full" }
+
+                if (gameCore.currentTurn === gameCore.player1) {
+                    gameCore.player1.changeColor(event.detail.color);
+                    gameCore.player2.changeColor(otherColor);
+                } else if (gameCore.currentTurn === gameCore.player2) {
+                    gameCore.player1.changeColor(otherColor);
+                    gameCore.player2.changeColor(event.detail.color);
+                }
             }
         });
     }

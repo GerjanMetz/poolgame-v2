@@ -23,9 +23,11 @@ class Core {
         this.utils = new Utils();
         this.static = new Static();
         this.player1 = new Player();
+        this.player2 = new Player();
         this.world = new World();
 
         this.inAnimation = false;
+        this.currentTurn = this.player1;
 
         gameCore.world.cue.initCue(gameCore.world.balls[0]);
 
@@ -39,6 +41,14 @@ class Core {
         this.camera.position.y = 2.5;
         this.camera.position.z = -0.00001;
         this.camera.lookAt(this.world.table.bed.position);
+    }
+
+    flipCurrentTurn() {
+        if (this.currentTurn === this.player1) {
+            this.currentTurn = this.player2;
+        } else {
+            this.currentTurn = this.player1;
+        }
     }
 
     gameLoop() {
