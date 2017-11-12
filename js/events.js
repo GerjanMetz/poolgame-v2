@@ -87,6 +87,8 @@ class Events {
 
             if (event.detail.color === gameCore.currentTurn.color) { gameCore.currentTurn.addScore(10); } else { gameCore.currentTurn.addScore(-10); }
 
+            if (event.detail.number === 8) { gameCore.ui.showEndScreen(); }
+
             this.puttedBalls.push(event.detail);
         });
     }
