@@ -16,6 +16,8 @@ class Ball extends THREE.Mesh{
         let ballGeometry = new THREE.SphereGeometry(gameCore.static.ballRadius);
         super(ballGeometry, ballMaterial);
 
+        this.number = number;
+
         this.speedX = 0.0;
         this.speedZ = 0.0;
         this.mass = 1;

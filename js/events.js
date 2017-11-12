@@ -23,6 +23,7 @@ class Events {
             gameCore.world.balls[0].SetSpeedX = dx * 0.1;
             gameCore.world.balls[0].SetSpeedZ = dz * 0.1;
 
+            gameCore.world.cue.visible = false;
             gameCore.inAnimation = true;
         });
 
@@ -54,7 +55,13 @@ class Events {
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
 
             this.angle = 180;
+            gameCore.world.cue.visible = true;
             gameCore.inAnimation = false;
+        });
+
+        window.addEventListener('ballPutted', (event) => {
+            console.log("ballputted event");
+            let number = event.detail;
         });
     }
 }
