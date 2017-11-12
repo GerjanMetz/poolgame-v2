@@ -13,7 +13,7 @@ class Events {
             gameCore.renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        window.addEventListener('click', (event) => {
+        window.addEventListener('click', () => {
             let cueX = gameCore.world.cue.position.x;
             let cueZ = gameCore.world.cue.position.z;
 
@@ -28,15 +28,9 @@ class Events {
 
         window.addEventListener('mousemove', (event) => {
             if (gameCore.inAnimation) { return; }
-            //
-            // let rotSpeed = Math.abs(event.movementX )* 0.005;
-            // let x = gameCore.world.cue.position.x;
-            // let z = gameCore.world.cue.position.z;
-            //
+
             let dx = gameCore.world.balls[0].position.x;
             let dz = gameCore.world.balls[0].position.z;
-
-            // console.log(event);
 
             this.angle += (event.movementX) * 0.01;
 
@@ -46,19 +40,9 @@ class Events {
             gameCore.world.cue.position.x += dx;
             gameCore.world.cue.position.z += dz;
 
-
-
-            // if (event.movementX > 0){
-            //     gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed));
-            //     gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed));
-            // } else if (event.movementX < 0){
-            //     gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed));
-            //     gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed));
-            // }
-
-            // gameCore.world.cue.position.x += (event.movementX * 0.005) * -1;
-            // gameCore.world.cue.position.z -= (event.movementX * 0.005) * -1;
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
+
+            console.log(gameCore.utils.calcDistance(gameCore.world.cue, gameCore.world.balls[0]));
         });
 
         window.addEventListener('endTurn', () => {

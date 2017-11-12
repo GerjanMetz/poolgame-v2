@@ -10,9 +10,9 @@ class Cue extends THREE.Mesh {
     initCue(object) {
         let offset = Math.PI / 2;
 
-        this.position.y = object.position.y;
+        this.position.y = object.position.y + gameCore.static.ballRadius;
 
-        this.rotation.x = 0;
+        this.rotation.x = 0.05;
         this.rotation.y = offset;
         this.rotation.z = offset;
 
@@ -22,22 +22,13 @@ class Cue extends THREE.Mesh {
     pointAt(object) {
         let offset = Math.PI / 2;
 
-        // this.position.x = object.position.x;
-        // this.position.y = object.position.y + (gameCore.static.ballRadius * 2);
-        // this.position.z = (object.position.z - (gameCore.static.cueLength / 2) - 0.1);
-
-        // this.position.x = 0;
-        // this.position.y = object.position.y;
-        // this.position.z = 0;
         let dx = object.position.x - this.position.x;
-        let dy = object.position.z - this.position.z;
+        let dy = object.position.y - this.position.y;
+        let dz = object.position.z - this.position.z;
 
-        console.log(dx);console.log(dy);
+        let horAngle = Math.atan2(dx, dz);
 
-        let angle = Math.atan2(dx, dy);
-        console.log(angle);
-
-        this.rotation.y = angle + offset;
+        this.rotation.y = horAngle + offset;
     }
 
     posAt(object) {

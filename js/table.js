@@ -59,9 +59,6 @@ class Table {
         this.pocketLowerLeft = pocket.clone();
         this.pocketLowerRight = pocket.clone();
 
-
-
-
         // add pockets to array
         this.pockets[0] = this.pocketUpperLeft;
         this.pockets[1] = this.pocketUpperRight;
@@ -69,7 +66,6 @@ class Table {
         this.pockets[3] = this.pocketMidRight;
         this.pockets[4] = this.pocketLowerLeft;
         this.pockets[5] = this.pocketLowerRight;
-
     }
 
     buildTable() {
@@ -93,7 +89,6 @@ class Table {
         this.wallLowerRight.position.z = (gameCore.static.bedWidth / 2) * -1;
 
         this.wallBottom.position.z = -1.45;
-
 
         // position pockets
         this.pocketUpperLeft.position.x = gameCore.static.bedWidth / 2;
@@ -136,7 +131,6 @@ class Table {
         this.poolTable.add(this.wallLowerLeft);
         this.poolTable.add(this.wallLowerRight);
         this.poolTable.add(this.wallBottom);
-
 
         // add to scene
         gameCore.scene.add(

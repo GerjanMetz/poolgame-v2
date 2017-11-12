@@ -27,7 +27,6 @@ class Core {
 
         gameCore.world.cue.initCue(gameCore.world.balls[0]);
 
-
         let light = new THREE.PointLight( 0xffffff, 1, 100 );
         light.position.set(1,3,1);
         this.scene.add(light);
@@ -36,16 +35,6 @@ class Core {
         this.camera.position.y = 2.5;
         this.camera.position.z = -0.00001;
         this.camera.lookAt(this.world.table.bed.position);
-
-        // this.tempSetup();
-    }
-
-    tempSetup() {
-        gameCore.world.balls[0].position.x = 0;
-        gameCore.world.balls[0].position.z = 0;
-
-        // gameCore.world.cue.position.x = 0;
-        // gameCore.world.cue.position.z = - 0.9;
     }
 
     gameLoop() {

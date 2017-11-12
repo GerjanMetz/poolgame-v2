@@ -48,22 +48,6 @@ class Physics {
         this.ballCollision();
     }
 
-    shootBall(mouseX, mouseZ) {
-        // for (let i = 0; i < gameCore.static.amountBalls; i++) {
-        //     gameCore.world.balls[i].SetSpeedX = Math.random() * 0.01;
-        //     gameCore.world.balls[i].SetSpeedZ = Math.random() * 0.01;
-        //
-        //
-        //     // gameCore.world.balls[i].SetSpeedX = (gameCore.world.balls[i].position.x - mouseX) * 0.0001;
-        //     // gameCore.world.balls[i].SetSpeedZ = (gameCore.world.balls[i].position.z - mouseZ) * 0.0001;
-        // }
-
-        // gameCore.world.balls[0].SetSpeedX = (gameCore.world.balls[0].position.x - mouseX) * 0.0001;
-        // gameCore.world.balls[0].SetSpeedZ = (gameCore.world.balls[0].position.z - mouseZ) * 0.0001;
-
-
-        gameCore.world.balls[0].SetSpeedZ = 0.08;
-    }
 
     wallCollision() {
         for (let i = 0; i < gameCore.static.amountBalls; i++) {
