@@ -26,22 +26,30 @@ class Events {
 
         window.addEventListener('mousemove', (event) => {
             if (gameCore.inAnimation) { return; }
-
-
             console.log("mouseX: ", event.movementX);
-            // console.log("mouseY: ", event.clientY);
+
             let rotSpeed = Math.abs(event.movementX )* 0.005;
             let x = gameCore.world.cue.position.x;
             let z = gameCore.world.cue.position.z;
 
+            let dx = gameCore.world.balls[0].position.x;
+            let dz = gameCore.world.balls[0].position.z;
+
             // console.log(event);
 
+            // if (event.movementX > 0){
+            // } else if (event.movementX < 0){
+            //     gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed));
+            //     gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed));
+            // }
+
+            //
             if (event.movementX > 0){
-                gameCore.world.cue.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed);
-                gameCore.world.cue.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed);
+                gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed));
+                gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed));
             } else if (event.movementX < 0){
-                gameCore.world.cue.position.x = x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed);
-                gameCore.world.cue.position.z = z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed);
+                gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed));
+                gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed));
             }
 
             // gameCore.world.cue.position.x += (event.movementX * 0.005) * -1;
@@ -52,9 +60,9 @@ class Events {
         window.addEventListener('endTurn', () => {
             console.log("endTurn");
 
-            // gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
-            // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
-            // gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
+            gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
+            gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
+            gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
 
             gameCore.world.cue.posAt(gameCore.world.balls[0]);
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);

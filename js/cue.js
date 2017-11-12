@@ -4,12 +4,10 @@ class Cue extends THREE.Mesh {
         let cueMaterial = new THREE.MeshPhongMaterial();
         super(cueGeometry, cueMaterial);
 
-
-
         gameCore.scene.add(this);
     }
 
-    initPos(object) {
+    initCue(object) {
         let offset = Math.PI / 2;
 
         this.position.y = object.position.y;
@@ -17,6 +15,8 @@ class Cue extends THREE.Mesh {
         this.rotation.x = 0;
         this.rotation.y = offset;
         this.rotation.z = offset;
+
+        this.position.z = gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1;
     }
 
     pointAt(object) {

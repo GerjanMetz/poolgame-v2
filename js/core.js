@@ -25,7 +25,7 @@ class Core {
 
         this.inAnimation = false;
 
-        gameCore.world.cue.initPos(gameCore.world.balls[1]);
+        gameCore.world.cue.initCue(gameCore.world.balls[0]);
 
 
         let light = new THREE.PointLight( 0xffffff, 1, 100 );
@@ -37,10 +37,7 @@ class Core {
         this.camera.position.z = -0.00001;
         this.camera.lookAt(this.world.table.bed.position);
 
-
-
         // this.tempSetup();
-        gameCore.world.cue.posAt(gameCore.world.balls[0]);
     }
 
     tempSetup() {
@@ -55,6 +52,7 @@ class Core {
         // request
         requestAnimationFrame( window.gameCore.gameLoop );
         gameCore.renderer.render(gameCore.scene, gameCore.camera);
+
 
         // update physics
         gameCore.physics.update();

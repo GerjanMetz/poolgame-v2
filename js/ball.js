@@ -1,9 +1,19 @@
 class Ball extends THREE.Mesh{
-    constructor(){
+    constructor(number){
         console.log("ball constructor");
+        let ballMaterial;
+
+        if (number > 0) {
+            let path = './img/PoolBall' + number + '.jpg';
+            let texture = new THREE.TextureLoader().load(path);
+
+            ballMaterial = new THREE.MeshPhongMaterial({  map: texture });
+
+        } else {
+            ballMaterial = new THREE.MeshPhongMaterial({ color: 0xdddddd });
+        }
 
         let ballGeometry = new THREE.SphereGeometry(gameCore.static.ballRadius);
-        let ballMaterial = new THREE.MeshPhongMaterial({ });
         super(ballGeometry, ballMaterial);
 
         this.speedX = 0.0;
@@ -18,6 +28,11 @@ class Ball extends THREE.Mesh{
         this.castShadow = true;
 
         gameCore.scene.add(this);
+    }
+
+    initBall() {
+        this.rotation.x = Math.PI / 2;
+        this.rotation.y = Math.PI / 2;
     }
 
     get GetSpeedX() {
