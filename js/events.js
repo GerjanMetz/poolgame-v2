@@ -2,6 +2,8 @@ class Events {
     constructor() {
         console.log("events constructor");
 
+        this.angle = 0;
+
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
         gameCore.controls.mouseButtons.PAN = null;
 
@@ -26,31 +28,33 @@ class Events {
 
         window.addEventListener('mousemove', (event) => {
             if (gameCore.inAnimation) { return; }
-            console.log("mouseX: ", event.movementX);
-
-            let rotSpeed = Math.abs(event.movementX )* 0.005;
-            let x = gameCore.world.cue.position.x;
-            let z = gameCore.world.cue.position.z;
-
+            //
+            // let rotSpeed = Math.abs(event.movementX )* 0.005;
+            // let x = gameCore.world.cue.position.x;
+            // let z = gameCore.world.cue.position.z;
+            //
             let dx = gameCore.world.balls[0].position.x;
             let dz = gameCore.world.balls[0].position.z;
 
             // console.log(event);
 
+            this.angle += (event.movementX) * 0.01;
+
+            gameCore.world.cue.position.x = Math.sin(this.angle) * 0.9;
+            gameCore.world.cue.position.z = Math.cos(this.angle) * 0.9;
+
+            gameCore.world.cue.position.x += dx;
+            gameCore.world.cue.position.z += dz;
+
+
+
             // if (event.movementX > 0){
+            //     gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed));
+            //     gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed));
             // } else if (event.movementX < 0){
             //     gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed));
             //     gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed));
             // }
-
-            //
-            if (event.movementX > 0){
-                gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed));
-                gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed));
-            } else if (event.movementX < 0){
-                gameCore.world.cue.position.x = (x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed));
-                gameCore.world.cue.position.z = (z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed));
-            }
 
             // gameCore.world.cue.position.x += (event.movementX * 0.005) * -1;
             // gameCore.world.cue.position.z -= (event.movementX * 0.005) * -1;
