@@ -3,6 +3,7 @@ class Events {
         console.log("events constructor");
 
         this.angle = 180;
+        this.puttedBalls = [];
         this.flipCurrentTurn = false;
 
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
@@ -66,6 +67,7 @@ class Events {
         window.addEventListener('ballPutted', (event) => {
             console.log("ballputted event");
             console.log(event);
+            event.detail.isPutted = true;
 
 
             if (gameCore.currentTurn.color === undefined) {
@@ -80,7 +82,12 @@ class Events {
                     gameCore.player1.changeColor(otherColor);
                     gameCore.player2.changeColor(event.detail.color);
                 }
+
             }
+
+            if (event.detail.color === gameCore.currentTurn.color) { gameCore.currentTurn.addScore(10); } else { gameCore.currentTurn.addScore(-10); }
+
+            this.puttedBalls.push(event.detail);
         });
     }
 }

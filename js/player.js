@@ -3,7 +3,7 @@ class Player {
         console.log("player constructor");
         this.name;
         this.color;
-        this.score;
+        this.score = 0;
     }
 
     changeName(name) {
