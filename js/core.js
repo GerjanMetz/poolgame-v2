@@ -29,6 +29,8 @@ class Core {
 
         let light = new THREE.PointLight( 0xffffff, 1, 100 );
         light.position.set(1,3,1);
+
+        light.castShadow = true;
         this.scene.add(light);
 
         this.camera.position.x = 0;

@@ -22,7 +22,6 @@ class World {
 
             gameCore.scene.add(this.balls[i]);
         }
-
     }
 
     setupBalls() {
@@ -47,5 +46,14 @@ class World {
         this.balls[14].position.set(this.balls[1].position.x - (0 * 0.055), gameCore.static.bedHeight / 2 + gameCore.static.ballRadius, this.balls[1].position.z + (4 * 0.096));
         this.balls[3].position.set(this.balls[1].position.x - (2 * 0.055), gameCore.static.bedHeight / 2 + gameCore.static.ballRadius, this.balls[1].position.z + (4 * 0.096));
         this.balls[4].position.set(this.balls[1].position.x - (4 * 0.055), gameCore.static.bedHeight / 2 + gameCore.static.ballRadius, this.balls[1].position.z + (4 * 0.096));
+    }
+
+    resetBall() {
+        this.balls[0].position.set(0, gameCore.static.bedHeight / 2 + gameCore.static.ballRadius, (gameCore.static.bedDepth / 3) * -1);
+
+        this.balls[0].SetSpeedX = 0;
+        this.balls[0].SetSpeedZ = 0;
+
+        window.dispatchEvent(new Event('endTurn'));
     }
 }

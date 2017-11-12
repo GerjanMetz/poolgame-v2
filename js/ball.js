@@ -20,6 +20,7 @@ class Ball extends THREE.Mesh{
         this.speedZ = 0.0;
         this.mass = 1;
         this.Colliding = false;
+        this.isPutted = false;
 
         this.oldPosX = 0;
         this.oldPosZ = 0;

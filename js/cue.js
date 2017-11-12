@@ -4,6 +4,9 @@ class Cue extends THREE.Mesh {
         let cueMaterial = new THREE.MeshPhongMaterial();
         super(cueGeometry, cueMaterial);
 
+        this.castShadow = true;
+        this.recieveShadow = true;
+
         gameCore.scene.add(this);
     }
 

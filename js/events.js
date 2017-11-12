@@ -2,7 +2,7 @@ class Events {
     constructor() {
         console.log("events constructor");
 
-        this.angle = 0;
+        this.angle = 180;
 
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
         gameCore.controls.mouseButtons.PAN = null;
@@ -41,8 +41,6 @@ class Events {
             gameCore.world.cue.position.z += dz;
 
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
-
-            console.log(gameCore.utils.calcDistance(gameCore.world.cue, gameCore.world.balls[0]));
         });
 
         window.addEventListener('endTurn', () => {
@@ -55,6 +53,7 @@ class Events {
             gameCore.world.cue.posAt(gameCore.world.balls[0]);
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
 
+            this.angle = 180;
             gameCore.inAnimation = false;
         });
     }

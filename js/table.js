@@ -66,6 +66,43 @@ class Table {
         this.pockets[3] = this.pocketMidRight;
         this.pockets[4] = this.pocketLowerLeft;
         this.pockets[5] = this.pocketLowerRight;
+
+        // enable shadows
+        this.bed.castShadow = true;
+        this.bed.receiveShadow = true;
+
+        this.wallTop.castShadow = true;
+        this.wallTop.receiveShadow = true;
+
+        this.wallTopLeft.castShadow = true;
+        this.wallTopLeft.receiveShadow = true;
+
+        this.wallTopRight.castShadow = true;
+        this.wallTopRight.receiveShadow = true;
+
+        this.wallLowerLeft.castShadow = true;
+        this.wallLowerLeft.receiveShadow = true;
+
+        this.wallLowerRight.castShadow = true;
+        this.wallLowerRight.receiveShadow = true;
+
+        this.wallBottom.castShadow = true;
+        this.wallBottom.receiveShadow = true;
+
+        this.pocketUpperLeft.castShadow = true;
+        this.pocketUpperLeft.receiveShadow = true;
+
+        this.pocketUpperRight.castShadow = true;
+        this.pocketUpperRight.receiveShadow = true;
+
+        this.pocketMidLeft.castShadow = true;
+        this.pocketMidLeft.receiveShadow = true;
+
+        this.pocketMidRight.castShadow = true;
+        this.pocketMidRight.receiveShadow = true;
+
+        this.pocketLowerLeft.castShadow = true;
+        this.pocketLowerLeft.receiveShadow = true;
     }
 
     buildTable() {
