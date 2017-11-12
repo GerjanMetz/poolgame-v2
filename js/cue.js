@@ -12,9 +12,7 @@ class Cue extends THREE.Mesh {
     initPos(object) {
         let offset = Math.PI / 2;
 
-        this.position.x = 1;
         this.position.y = object.position.y;
-        this.position.z = 1;
 
         this.rotation.x = 0;
         this.rotation.y = offset;
@@ -40,5 +38,10 @@ class Cue extends THREE.Mesh {
         console.log(angle);
 
         this.rotation.y = angle + offset;
+    }
+
+    posAt(object) {
+        this.position.x = object.position.x;
+        this.position.z = object.position.z - (gameCore.static.cueLength / 2) - 0.1;
     }
 }

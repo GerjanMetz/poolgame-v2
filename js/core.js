@@ -23,6 +23,8 @@ class Core {
         this.player1 = new Player();
         this.world = new World();
 
+        this.inAnimation = false;
+
         gameCore.world.cue.initPos(gameCore.world.balls[1]);
 
 
@@ -37,15 +39,16 @@ class Core {
 
 
 
-        this.tempSetup();
+        // this.tempSetup();
+        gameCore.world.cue.posAt(gameCore.world.balls[0]);
     }
 
     tempSetup() {
         gameCore.world.balls[0].position.x = 0;
         gameCore.world.balls[0].position.z = 0;
 
-        gameCore.world.cue.position.x = 0;
-        gameCore.world.cue.position.z = - 0.9;
+        // gameCore.world.cue.position.x = 0;
+        // gameCore.world.cue.position.z = - 0.9;
     }
 
     gameLoop() {

@@ -12,36 +12,54 @@ class Events {
         });
 
         window.addEventListener('click', (event) => {
+            let cueX = gameCore.world.cue.position.x;
+            let cueZ = gameCore.world.cue.position.z;
 
-            // console.log("onclick");
-            // console.log("X: " + event.clientX);
-            // console.log("Y: " + event.clientY);
-            //
-            // let mouseXOffset = window.innerWidth / 2;
-            // let mouseYOffset = window.innerHeight / 2;
-            //
-            // console.log("offsetX: " + (event.clientX - mouseXOffset));
-            // console.log("offsetY: " + (event.clientY - mouseYOffset));
-            //
-            // // gameCore.physics.shootBall(e.clientX - mouseXOffset, e.clientY - mouseYOffset);
-            //
-            // gameCore.world.balls[0].SetSpeedZ = 0.08;
+            let dx = gameCore.world.balls[0].position.x - cueX;
+            let dz = gameCore.world.balls[0].position.z - cueZ;
 
-            gameCore.world.cue.pointAt(gameCore.world.balls[0]);
+            gameCore.world.balls[0].SetSpeedX = dx * 0.1;
+            gameCore.world.balls[0].SetSpeedZ = dz * 0.1;
+
+            gameCore.inAnimation = true;
         });
 
         window.addEventListener('mousemove', (event) => {
+            if (gameCore.inAnimation) { return; }
+
+
             console.log("mouseX: ", event.movementX);
             // console.log("mouseY: ", event.clientY);
+            let rotSpeed = Math.abs(event.movementX )* 0.005;
+            let x = gameCore.world.cue.position.x;
+            let z = gameCore.world.cue.position.z;
 
             // console.log(event);
 
-            gameCore.world.cue.position.x += event.movementX * 0.001;
+            if (event.movementX > 0){
+                gameCore.world.cue.position.x = x * Math.cos(rotSpeed) + z * Math.sin(rotSpeed);
+                gameCore.world.cue.position.z = z * Math.cos(rotSpeed) - x * Math.sin(rotSpeed);
+            } else if (event.movementX < 0){
+                gameCore.world.cue.position.x = x * Math.cos(rotSpeed) - z * Math.sin(rotSpeed);
+                gameCore.world.cue.position.z = z * Math.cos(rotSpeed) + x * Math.sin(rotSpeed);
+            }
+
+            // gameCore.world.cue.position.x += (event.movementX * 0.005) * -1;
+            // gameCore.world.cue.position.z -= (event.movementX * 0.005) * -1;
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
         });
 
         window.addEventListener('endTurn', () => {
             console.log("endTurn");
+
+            // gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
+            // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
+            // gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
+
+            gameCore.world.cue.posAt(gameCore.world.balls[0]);
+            gameCore.world.cue.pointAt(gameCore.world.balls[0]);
+
+            gameCore.inAnimation = false;
         });
     }
 }
