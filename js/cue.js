@@ -13,7 +13,7 @@ class Cue extends THREE.Mesh {
     initCue(object) {
         let offset = Math.PI / 2;
 
-        this.position.y = object.position.y + gameCore.static.ballRadius;
+        this.position.y = object.position.y /* + gameCore.static.ballRadius */;
 
         this.rotation.x = 0.05;
         this.rotation.y = offset;

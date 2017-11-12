@@ -47,7 +47,7 @@ class Events {
             console.log("endTurn");
 
             gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
-            gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
+            // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
             gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
 
             gameCore.world.cue.posAt(gameCore.world.balls[0]);
