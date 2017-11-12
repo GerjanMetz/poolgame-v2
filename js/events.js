@@ -61,7 +61,12 @@ class Events {
 
         window.addEventListener('ballPutted', (event) => {
             console.log("ballputted event");
-            let number = event.detail;
+            console.log(event);
+
+
+            if (gameCore.player1.color === undefined) {
+                console.log("UNDEFINED");
+            }
         });
     }
 }

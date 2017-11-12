@@ -153,7 +153,7 @@ class Physics {
                     gameCore.world.balls[i].position.x = 1.5;
                     gameCore.world.balls[i].position.z = (i * 0.13) - gameCore.static.bedDepth / 3;
 
-                    window.dispatchEvent(new CustomEvent('ballPutted', { detail: gameCore.world.balls[i].number }));
+                    window.dispatchEvent(new CustomEvent('ballPutted', { detail: gameCore.world.balls[i] }));
                 }
             }
         }

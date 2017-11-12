@@ -18,6 +18,8 @@ class Ball extends THREE.Mesh{
 
         this.number = number;
 
+        if (number >= 9) { this.color = "half" } else { this.color = "full" }
+
         this.speedX = 0.0;
         this.speedZ = 0.0;
         this.mass = 1;
