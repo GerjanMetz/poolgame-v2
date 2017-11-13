@@ -29,12 +29,6 @@ class Events {
 
             gameCore.events.freezeGame = false;
         };
-        //
-        // document.getElementById("playAgainButton").onclick = function () {
-        //     gameCore.init();
-        //
-        //     gameCore.ui.hideAll();
-        // };
 
         window.addEventListener('click', () => {
             if (this.freezeGame || gameCore.inAnimation) { return; }

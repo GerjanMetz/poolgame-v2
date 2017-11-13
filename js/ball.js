@@ -13,7 +13,7 @@ class Ball extends THREE.Mesh{
             ballMaterial = new THREE.MeshPhongMaterial({ color: 0xdddddd });
         }
 
-        let ballGeometry = new THREE.SphereGeometry(gameCore.static.ballRadius);
+        let ballGeometry = new THREE.SphereGeometry(gameCore.static.ballRadius, 32 , 32);
         super(ballGeometry, ballMaterial);
 
         this.number = number;
