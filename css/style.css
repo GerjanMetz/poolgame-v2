@@ -61,3 +61,16 @@
     height: 100%;
     background-color: orange;
 }
+
+#hudCurrentTurn {
+    z-index: 10;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 500px;
+    height: 80px;
+    background-color: purple;
+    text-align: center;
+}

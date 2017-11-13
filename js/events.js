@@ -79,13 +79,16 @@ class Events {
 
             this.angle = 180;
 
-            document.getElementById("player1HudScore").innerHTML = gameCore.player1.score;
-            document.getElementById("player2HudScore").innerHTML = gameCore.player2.score;
+            document.getElementById("player1HudScore").innerHTML = "Score: " + gameCore.player1.score;
+            document.getElementById("player2HudScore").innerHTML = "Score: " + gameCore.player2.score;
 
 
             if (this.flipCurrentTurn) { gameCore.flipCurrentTurn() }
 
             console.log("currentTurn: ", gameCore.currentTurn);
+
+            document.getElementById("hudCurrentTurnText").innerHTML = "Current turn: " + gameCore.currentTurn.name;
+
             this.turnPuttedBalls = [];
             this.flipCurrentTurn = false;
             gameCore.world.cue.visible = true;
@@ -113,8 +116,8 @@ class Events {
                 console.log("p1 plays: " + gameCore.player1.color);
                 console.log("p2 plays: " + gameCore.player2.color);
 
-                document.getElementById("player1HudColor").innerHTML = gameCore.player1.color;
-                document.getElementById("player2HudColor").innerHTML = gameCore.player2.color;
+                document.getElementById("player1HudColor").innerHTML = "Color: " + gameCore.player1.color;
+                document.getElementById("player2HudColor").innerHTML = "Color: " + gameCore.player2.color;
             }
 
             switch (event.detail.number) {
