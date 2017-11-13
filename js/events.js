@@ -6,6 +6,7 @@ class Events {
         this.puttedBalls = [];
         this.turnPuttedBalls = [];
         this.flipCurrentTurn = false;
+        this.freezeGame = true;
 
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
         gameCore.controls.mouseButtons.PAN = null;
@@ -23,6 +24,8 @@ class Events {
         };
 
         window.addEventListener('click', () => {
+            if (this.freezeGame) { return; }
+
             let cueX = gameCore.world.cue.position.x;
             let cueZ = gameCore.world.cue.position.z;
 
@@ -37,7 +40,7 @@ class Events {
         });
 
         window.addEventListener('mousemove', (event) => {
-            if (gameCore.inAnimation) { return; }
+            if (gameCore.inAnimation || this.freezeGame) { return; }
 
             let dx = gameCore.world.balls[0].position.x;
             let dz = gameCore.world.balls[0].position.z;
