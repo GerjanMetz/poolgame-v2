@@ -10,6 +10,8 @@ class World {
 
         this.createBalls(gameCore.static.amountBalls);
         this.setupBalls();
+        this.createFloor();
+
     }
 
     createBalls(amountBalls) {
@@ -22,6 +24,23 @@ class World {
 
             gameCore.scene.add(this.balls[i]);
         }
+    }
+
+    createFloor() {
+        let path = "./img/floor-texture-1.jpg";
+        let texture = new THREE.TextureLoader().load(path);
+
+
+        let geometrySceneFloor = new THREE.PlaneGeometry(11, 11, 32);
+        let materialSceneFloor = new THREE.MeshPhongMaterial( { map: texture, side: THREE.DoubleSide } );
+        let sceneFloor = new THREE.Mesh(geometrySceneFloor, materialSceneFloor);
+
+        sceneFloor.position.set(0,-1,0);
+        sceneFloor.rotation.x = Math.PI / 2;
+
+        sceneFloor.receiveShadow = false;
+
+        gameCore.scene.add(sceneFloor);
     }
 
     setupBalls() {
@@ -56,6 +75,6 @@ class World {
 
         this.balls[0].isPutted = false;
 
-        window.dispatchEvent(new Event('endTurn'));
+        // window.dispatchEvent(new Event('endTurn'));
     }
 }

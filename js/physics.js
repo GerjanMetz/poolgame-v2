@@ -150,6 +150,7 @@ class Physics {
                     gameCore.world.balls[i].SetSpeedX = 0;
                     gameCore.world.balls[i].SetSpeedZ = 0;
 
+
                     gameCore.world.balls[i].position.x = 1.5;
                     gameCore.world.balls[i].position.z = (i * 0.13) - gameCore.static.bedDepth / 3;
 
