@@ -151,8 +151,10 @@ class Physics {
                     gameCore.world.balls[i].SetSpeedZ = 0;
 
 
-                    gameCore.world.balls[i].position.x = 1.5;
-                    gameCore.world.balls[i].position.z = (i * 0.13) - gameCore.static.bedDepth / 3;
+                    gameCore.world.balls[i].position.x = (i * 0.13) - gameCore.static.bedDepth / 2.65;
+                    gameCore.world.balls[i].position.z = -1.7;
+
+                    gameCore.world.balls[i].rotation.x += 0.6;
 
                     window.dispatchEvent(new CustomEvent('ballPutted', { detail: gameCore.world.balls[i] }));
                 }

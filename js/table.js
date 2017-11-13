@@ -9,15 +9,38 @@ class Table {
     }
 
     createTableElements() {
+        let pooltableBedTexturePath = "./img/pooltable-bed-texture-crop.jpg";
+        let bedTexture = new THREE.TextureLoader().load(pooltableBedTexturePath, function ( texture ) {
+
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.offset.set( 0, 0 );
+            texture.repeat.set( 2, 2 );
+
+        } );
+
+        let pooltableWoodTexturePath = "./img/table-wood-texture-1.jpg";
+        let woodTexture = new THREE.TextureLoader().load(pooltableWoodTexturePath);
+
+
+        // create borders
+        let borderLongGeometry = new THREE.BoxGeometry(0.21, 0.21, gameCore.static.bedDepth + gameCore.static.wallBodyDepth + 0.2);
+        let borderShortGeometry = new THREE.BoxGeometry(0.21, 0.21, gameCore.static.bedWidth + gameCore.static.wallBodyDepth + 0.2);
+        let borderMaterial = new THREE.MeshPhongMaterial({ map: woodTexture });
+
+        this.borderTop = new THREE.Mesh(borderShortGeometry, borderMaterial);
+        this.borderBottom = new THREE.Mesh(borderShortGeometry, borderMaterial);
+        this.borderLeft = new THREE.Mesh(borderLongGeometry, borderMaterial);
+        this.borderRight = new THREE.Mesh(borderLongGeometry, borderMaterial);
+
         // create bed
-        let bedGeometry = new THREE.BoxGeometry(gameCore.static.bedWidth, gameCore.static.bedHeight, gameCore.static.bedDepth);
-        let bedMaterial = new THREE.MeshPhongMaterial({ color: "blue" });
+        let bedGeometry = new THREE.BoxGeometry(gameCore.static.bedWidth + 0.2, gameCore.static.bedHeight, gameCore.static.bedDepth + 0.2);
+        let bedMaterial = new THREE.MeshPhongMaterial({ map: bedTexture });
         this.bed = new THREE.Mesh(bedGeometry, bedMaterial);
 
         // create wall elements
         let wallBoxGeometry = new THREE.BoxGeometry(gameCore.static.wallBodyWidth, gameCore.static.wallBodyHeight, gameCore.static.wallBodyDepth);
         let wallCubeGeometry = new THREE.BoxGeometry(gameCore.static.wallCubeWidth, gameCore.static.wallCubeHeight, gameCore.static.wallCubeWidth);
-        let wallMaterial = new THREE.MeshPhongMaterial({ color: "green" });
+        let wallMaterial = new THREE.MeshPhongMaterial({ map: bedTexture });
         this.wallBody = new THREE.Mesh(wallBoxGeometry, wallMaterial);
         this.wallCube1 = new THREE.Mesh(wallCubeGeometry, wallMaterial);
         this.wallCube2 = new THREE.Mesh(wallCubeGeometry, wallMaterial);
@@ -48,7 +71,7 @@ class Table {
 
         // create pocket elements
         let pocketGeometry = new THREE.CylinderGeometry(gameCore.static.pocketRadius, gameCore.static.pocketRadius, gameCore.static.pocketHeight);
-        let pocketMaterial = new THREE.MeshPhongMaterial({ color: "orange" });
+        let pocketMaterial = new THREE.MeshPhongMaterial({ color: "black" });
         let pocket = new THREE.Mesh(pocketGeometry, pocketMaterial);
 
         // create pockets
@@ -106,6 +129,18 @@ class Table {
     }
 
     buildTable() {
+        // position borders
+        this.borderTop.rotation.y = Math.PI / 2;
+        this.borderTop.position.z = gameCore.static.bedDepth / 2 + 0.15;
+
+        this.borderLeft.position.x = gameCore.static.bedWidth / 2 + 0.15;
+        this.borderRight.position.x = (gameCore.static.bedWidth / 2 + 0.15) * -1;
+
+        this.borderBottom.rotation.y = Math.PI / 2;
+        this.borderBottom.position.z = (gameCore.static.bedDepth / 2 + 0.15) * -1;
+
+
+
         // position walls
         this.wallTop.position.z = 1.45;
 
@@ -183,6 +218,10 @@ class Table {
             this.wallTopRight,
             this.wallLowerLeft,
             this.wallLowerRight,
-            this.wallBottom);
+            this.wallBottom,
+            this.borderTop,
+            this.borderLeft,
+            this.borderRight,
+            this.borderBottom);
     }
 }
