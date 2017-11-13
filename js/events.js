@@ -21,6 +21,15 @@ class Events {
             console.log("playbutton");
             gameCore.player1.changeName(document.getElementById("player1").value);
             gameCore.player2.changeName(document.getElementById("player2").value);
+
+            document.getElementById("player1HudName").innerHTML = gameCore.player1.name;
+            document.getElementById("player2HudName").innerHTML = gameCore.player2.name;
+
+
+
+            gameCore.ui.hideAll();
+
+            gameCore.events.freezeGame = false;
         };
 
         window.addEventListener('click', () => {
@@ -70,6 +79,10 @@ class Events {
 
             this.angle = 180;
 
+            document.getElementById("player1HudScore").innerHTML = gameCore.player1.score;
+            document.getElementById("player2HudScore").innerHTML = gameCore.player2.score;
+
+
             if (this.flipCurrentTurn) { gameCore.flipCurrentTurn() }
 
             console.log("currentTurn: ", gameCore.currentTurn);
@@ -99,8 +112,10 @@ class Events {
                 }
                 console.log("p1 plays: " + gameCore.player1.color);
                 console.log("p2 plays: " + gameCore.player2.color);
-            }
 
+                document.getElementById("player1HudColor").innerHTML = gameCore.player1.color;
+                document.getElementById("player2HudColor").innerHTML = gameCore.player2.color;
+            }
 
             switch (event.detail.number) {
                 case 0:
