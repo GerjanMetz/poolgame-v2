@@ -41,6 +41,9 @@ class Core {
         light.position.set(1,3,1);
 
         light.castShadow = true;
+        light.shadowMapWidth = 2048;
+        light.shadowMapHeight = 2048;
+
         this.scene.add(light);
 
         this.camera.position.x = 0;
