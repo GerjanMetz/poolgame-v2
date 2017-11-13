@@ -11,24 +11,30 @@
 </head>
 <body>
 
-<div id="startScreen">
-    <h1>Welcome to my poolgame!</h1>
-    <p>Use the mouse to aim the cue.</p>
+<div id="menuScreen">
+    <div id="startScreen">
+        <h1>Welcome to my poolgame!</h1>
+        <p>Use the mouse to aim the cue.</p>
 
-    <form>
-        <p>Player 1:
-        <input type="text" name="player1">
-        </p>
+        <form>
+            <p>Player 1:
+                <input type="text" name="player1">
+            </p>
 
-        <p>Player 2:
-        <input type="text" name="player2"><br />
-        </p>
-        <input type="submit">
-    </form>
-</div>
+            <p>Player 2:
+                <input type="text" name="player2"><br />
+            </p>
+            <input type="submit">
+        </form>
+    </div>
 
-<div id="deathScreen">
-    <h1>Death</h1>
+    <div id="endScreen">
+        <h1>End!</h1>
+    </div>
+
+    <div id="deathScreen">
+        <h1>Death</h1>
+    </div>
 </div>
 
 <script src="./js/three.js"></script>
