@@ -49,9 +49,9 @@ class Events {
         window.addEventListener('endTurn', () => {
             console.log("endTurn");
 
-            gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
-            // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
-            gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
+            // gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
+            // // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
+            // gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
 
             gameCore.world.cue.posAt(gameCore.world.balls[0]);
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
@@ -69,7 +69,7 @@ class Events {
             console.log(event);
             event.detail.isPutted = true;
 
-
+            // deciding what color will be assigned to players
             if (gameCore.currentTurn.color === undefined) {
                 console.log("COLOR UNDEFINED");
                 let otherColor;
@@ -82,12 +82,36 @@ class Events {
                     gameCore.player1.changeColor(otherColor);
                     gameCore.player2.changeColor(event.detail.color);
                 }
-
             }
 
             if (event.detail.color === gameCore.currentTurn.color) { gameCore.currentTurn.addScore(10); } else { gameCore.currentTurn.addScore(-10); }
 
-            if (event.detail.number === 8) { gameCore.ui.showEndScreen(); }
+            switch (event.detail.number) {
+                case 0:
+                    gameCore.world.resetBall();
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    break;
+                case 8:
+                    gameCore.ui.showDeathScreen();
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                    break;
+                default:
+                    console.log("putted switch default");
+            }
 
             this.puttedBalls.push(event.detail);
         });

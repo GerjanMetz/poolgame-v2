@@ -14,7 +14,7 @@
     visibility: hidden;
 }
 
-#endScreen {
+#deathScreen {
     position: absolute;
     box-sizing: border-box;
     width: 600px;

@@ -143,7 +143,7 @@ class Physics {
         for(let i = 0; i < gameCore.static.amountBalls; i++){
             for(let j = 0; j < 6; j++){
                 if(gameCore.utils.calcDistance(gameCore.world.balls[i], gameCore.world.table.pockets[j]) < gameCore.static.ballRadius + gameCore.static.pocketRadius){
-                    if (i === 0) { gameCore.world.resetBall(); continue; }
+                    // if (i === 0) { gameCore.world.resetBall(); continue; }
 
                     gameCore.world.balls[i].isPutted = true;
 

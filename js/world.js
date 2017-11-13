@@ -54,6 +54,8 @@ class World {
         this.balls[0].SetSpeedX = 0;
         this.balls[0].SetSpeedZ = 0;
 
+        this.balls[0].isPutted = false;
+
         window.dispatchEvent(new Event('endTurn'));
     }
 }
