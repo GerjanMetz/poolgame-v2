@@ -25,15 +25,19 @@ class Events {
             document.getElementById("player1HudName").innerHTML = gameCore.player1.name;
             document.getElementById("player2HudName").innerHTML = gameCore.player2.name;
 
-
-
             gameCore.ui.hideAll();
 
             gameCore.events.freezeGame = false;
         };
+        //
+        // document.getElementById("playAgainButton").onclick = function () {
+        //     gameCore.init();
+        //
+        //     gameCore.ui.hideAll();
+        // };
 
         window.addEventListener('click', () => {
-            if (this.freezeGame) { return; }
+            if (this.freezeGame || gameCore.inAnimation) { return; }
 
             let cueX = gameCore.world.cue.position.x;
             let cueZ = gameCore.world.cue.position.z;
@@ -43,6 +47,7 @@ class Events {
 
             gameCore.world.balls[0].SetSpeedX = dx * 0.1;
             gameCore.world.balls[0].SetSpeedZ = dz * 0.1;
+
 
             gameCore.world.cue.visible = false;
             gameCore.inAnimation = true;
@@ -142,9 +147,15 @@ class Events {
                     break;
                 case 8:
                     if (gameCore.currentTurn.score < 7) {
-                        console.log(gameCore.currentTurn.name + " killed himself");
+                        // console.log(gameCore.currentTurn.name + " killed himself");
+                        this.freezeGame = true;
+                        gameCore.loser = gameCore.currentTurn;
+                        gameCore.ui.showDeathScreen();
                     } else {
-                        console.log(gameCore.currentTurn.name + " won the game! WINNER WINNER CHICKEN DINNER!");
+                        // console.log(gameCore.currentTurn.name + " won the game! WINNER WINNER CHICKEN DINNER!");
+                        this.freezeGame = true;
+                        gameCore.winner = gameCore.currentTurn;
+                        gameCore.ui.showEndScreen();
                     }
                     break;
                 case 9:

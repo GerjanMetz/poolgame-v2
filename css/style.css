@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, sans-serif;
+}
+
 #menuScreen {
     position: absolute;
     box-sizing: border-box;
@@ -9,9 +13,38 @@
     margin: 0 auto;
     padding: 10px 5px;
 
-    background-color: white;
+    border-radius: 25px;
+    border-color: whitesmoke;
+    border-style: double;
+
+    background-color: saddlebrown;
+    color: whitesmoke;
+    opacity: 0.9;
+
+    padding: 20px;
 
     visibility: hidden;
+}
+
+
+#hudCurrentTurn {
+    z-index: 10;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 500px;
+    height: 80px;
+    text-align: center;
+    background-color: saddlebrown;
+    color: whitesmoke;
+
+    opacity: 0.6;
+
+    border-radius: 25px;
+    border-color: whitesmoke;
+    border-style: double;
 }
 
 #startScreen {
@@ -50,7 +83,11 @@
     left: 0;
     width: 300px;
     height: 100%;
-    background-color: orange;
+    color: white;
+    padding: 30px;
+
+    background-color: saddlebrown;
+    opacity: 0.4;
 }
 
 #player2Hud {
@@ -59,18 +96,9 @@
     right: 0;
     width: 300px;
     height: 100%;
-    background-color: orange;
-}
+    padding: 30px;
+    color: white;
 
-#hudCurrentTurn {
-    z-index: 10;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 500px;
-    height: 80px;
-    background-color: purple;
-    text-align: center;
+    background-color: saddlebrown;
+    opacity: 0.4;
 }

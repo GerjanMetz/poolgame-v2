@@ -23,12 +23,17 @@ class UI {
 
     showEndScreen() {
         this.showMenu();
+        document.getElementById("endScreenTitle").innerHTML = "Winner Winner Chicken Dinner for " + gameCore.winner.name;
+
         document.getElementById("endScreen").style.display = "initial";
         document.getElementById("endScreen").style.visibility = "visible";
     }
 
     showDeathScreen() {
         this.showMenu();
+
+        document.getElementById("deathScreenTitle").innerHTML = "Oh oh, seems like " + gameCore.loser.name + " has prematurely scored the 8ball... And therefore he lost!";
+
         document.getElementById("deathScreen").style.display = "initial";
         document.getElementById("deathScreen").style.visibility = "visible";
     }

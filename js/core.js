@@ -4,6 +4,8 @@ class Core {
 
         this.currentTurn = null;
         this.otherTurn = null;
+        this.winner;
+        this.loser;
     }
 
     init() {
