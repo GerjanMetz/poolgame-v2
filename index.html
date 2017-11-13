@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -14,17 +14,35 @@
 <div id="menuScreen">
     <div id="startScreen">
         <h1>Welcome to my poolgame!</h1>
-        <p>Use the mouse to aim the cue.</p>
+        <p>Lets play a game of pool!</p>
+
+        <h2>The rules!</h2>
+        <p>The first person to score a ball in a pocket decides what color they play. If the first score is made by player 1,
+        and the color is full, then player 1 plays the full colored balls, and player 2 plays half colored balls. To win, a
+        player has to score all of his balls, and then score the 8ball (the black ball). If a player scores the 8ball before
+        all of his balls are scored, the player loses and the other player is the winner.</p>
+
+        <h2>Controls</h2>
+        <p>To aim the cue, move the mouse left or right. Shoot with mouse1 click.</p>
+
+        <h2>Names please!</h2>
 
         <form>
-            <p>Player 1:
-                <input type="text" name="player1">
-            </p>
+            <div id="playerNameRow" style="margin: 0 auto; display: flex; flex-flow: row nowrap;">
+                <div style="display: inline-block; margin: auto;">
+                    <p>Player 1:
+                        <input type="text" id="player1">
+                    </p>
+                </div>
 
-            <p>Player 2:
-                <input type="text" name="player2"><br />
-            </p>
-            <input type="submit">
+                <div style="display: inline-block; margin: auto;">
+                    <p>Player 2:
+                        <input type="text" id="player2"><br />
+                    </p>
+                </div><br />
+            </div>
+            <button type="button" id="playButton">Play!</button>
+
         </form>
     </div>
 

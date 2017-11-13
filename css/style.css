@@ -1,8 +1,8 @@
 #menuScreen {
     position: absolute;
     box-sizing: border-box;
-    width: 600px;
-    height: 400px;
+    width: 900px;
+    height: 600px;
     top: 200px;
     left: 0;
     right: 0;
@@ -31,4 +31,15 @@
 
 .h1 {
     text-align: center;
+}
+
+#playerNameRow {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+#playButton {
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
 }

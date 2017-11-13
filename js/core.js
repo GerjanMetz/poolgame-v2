@@ -27,6 +27,8 @@ class Core {
         this.player2 = new Player("p2");
         this.world = new World();
 
+        this.ui.showStartScreen();
+
         this.inAnimation = false;
         this.currentTurn = this.player1;
         this.otherTurn = this.player2;

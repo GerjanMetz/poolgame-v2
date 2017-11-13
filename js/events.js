@@ -16,6 +16,12 @@ class Events {
             gameCore.renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        document.getElementById("playButton").onclick = function () {
+            console.log("playbutton");
+            gameCore.player1.changeName(document.getElementById("player1").value);
+            gameCore.player2.changeName(document.getElementById("player2").value);
+        };
+
         window.addEventListener('click', () => {
             let cueX = gameCore.world.cue.position.x;
             let cueZ = gameCore.world.cue.position.z;
