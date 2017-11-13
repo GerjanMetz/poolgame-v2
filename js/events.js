@@ -114,6 +114,11 @@ class Events {
 
                     break;
                 case 8:
+                    if (gameCore.currentTurn.score < 7) {
+                        console.log(gameCore.currentTurn.name + " killed himself");
+                    } else {
+                        console.log(gameCore.currentTurn.name + " won the game! WINNER WINNER CHICKEN DINNER!");
+                    }
                     break;
                 case 9:
                 case 10:
