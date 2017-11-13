@@ -3,6 +3,7 @@ class Core {
         console.log("core constructor");
 
         this.currentTurn = null;
+        this.otherTurn = null;
     }
 
     init() {
@@ -22,12 +23,13 @@ class Core {
         this.events = new Events();
         this.utils = new Utils();
         this.static = new Static();
-        this.player1 = new Player();
-        this.player2 = new Player();
+        this.player1 = new Player("p1");
+        this.player2 = new Player("p2");
         this.world = new World();
 
         this.inAnimation = false;
         this.currentTurn = this.player1;
+        this.otherTurn = this.player2;
 
         gameCore.world.cue.initCue(gameCore.world.balls[0]);
 
@@ -45,9 +47,11 @@ class Core {
 
     flipCurrentTurn() {
         if (this.currentTurn === this.player1) {
+            this.otherTurn = this.player1;
             this.currentTurn = this.player2;
         } else {
             this.currentTurn = this.player1;
+            this.otherTurn = this.player2;
         }
     }
 

@@ -4,6 +4,7 @@ class Events {
 
         this.angle = 180;
         this.puttedBalls = [];
+        this.turnPuttedBalls = [];
         this.flipCurrentTurn = false;
 
         gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
@@ -49,17 +50,22 @@ class Events {
         window.addEventListener('endTurn', () => {
             console.log("endTurn");
 
-            // gameCore.world.cue.position.x = gameCore.world.balls[0].position.x;
-            // // gameCore.world.cue.position.y = gameCore.world.balls[0].position.y + (gameCore.static.ballRadius * 2);
-            // gameCore.world.cue.position.z = (gameCore.world.balls[0].position.z - (gameCore.static.cueLength / 2) - 0.1);
-
             gameCore.world.cue.posAt(gameCore.world.balls[0]);
             gameCore.world.cue.pointAt(gameCore.world.balls[0]);
+
+            if (this.turnPuttedBalls.length === 0) { this.flipCurrentTurn = true; }
+
+            for (let i = 0; i < this.turnPuttedBalls.length; i++){
+                if (this.turnPuttedBalls[i].color !== gameCore.currentTurn.color) { this.flipCurrentTurn = true; }
+            }
 
             this.angle = 180;
 
             if (this.flipCurrentTurn) { gameCore.flipCurrentTurn() }
 
+            console.log("currentTurn: ", gameCore.currentTurn);
+            this.turnPuttedBalls = [];
+            this.flipCurrentTurn = false;
             gameCore.world.cue.visible = true;
             gameCore.inAnimation = false;
         });
@@ -82,13 +88,15 @@ class Events {
                     gameCore.player1.changeColor(otherColor);
                     gameCore.player2.changeColor(event.detail.color);
                 }
+                console.log("p1 plays: " + gameCore.player1.color);
+                console.log("p2 plays: " + gameCore.player2.color);
             }
 
-            if (event.detail.color === gameCore.currentTurn.color) { gameCore.currentTurn.addScore(10); } else { gameCore.currentTurn.addScore(-10); }
 
             switch (event.detail.number) {
                 case 0:
                     gameCore.world.resetBall();
+                    this.flipCurrentTurn = true;
                     break;
                 case 1:
                 case 2:
@@ -97,9 +105,15 @@ class Events {
                 case 5:
                 case 6:
                 case 7:
+                    if (event.detail.color === gameCore.currentTurn.color) {
+                        gameCore.currentTurn.addScore(1);
+                    } else {
+                        gameCore.otherTurn.addScore(1);
+                        // this.flipCurrentTurn = true;
+                    }
+
                     break;
                 case 8:
-                    gameCore.ui.showDeathScreen();
                     break;
                 case 9:
                 case 10:
@@ -108,11 +122,20 @@ class Events {
                 case 13:
                 case 14:
                 case 15:
+                    if (event.detail.color === gameCore.currentTurn.color) {
+                        gameCore.currentTurn.addScore(1);
+                    } else {
+                        gameCore.otherTurn.addScore(1);
+                        // this.flipCurrentTurn = true;
+                    }
                     break;
                 default:
                     console.log("putted switch default");
             }
 
+            console.log("Score P1: " + gameCore.player1.score);
+            console.log("Score P2: " + gameCore.player2.score);
+            this.turnPuttedBalls.push(event.detail);
             this.puttedBalls.push(event.detail);
         });
     }

@@ -1,9 +1,10 @@
 class Player {
-    constructor() {
+    constructor(name) {
         console.log("player constructor");
-        this.name;
+        this.name = name;
         this.color;
         this.score = 0;
+        this.balls = [];
     }
 
     changeName(name) {
