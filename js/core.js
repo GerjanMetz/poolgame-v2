@@ -17,7 +17,7 @@ class Core {
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight , 0.1, 1000);
-        this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+        //this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.clock = new THREE.Clock();
 
         this.ui = new UI();

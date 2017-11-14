@@ -8,8 +8,8 @@ class Events {
         this.flipCurrentTurn = false;
         this.freezeGame = true;
 
-        gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
-        gameCore.controls.mouseButtons.PAN = null;
+        // gameCore.controls.mouseButtons.ORBIT = THREE.MOUSE.RIGHT;
+        // gameCore.controls.mouseButtons.PAN = null;
 
         window.addEventListener('resize', () => {
             gameCore.camera.aspect = window.innerWidth / window.innerHeight;
