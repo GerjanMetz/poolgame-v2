@@ -23,8 +23,8 @@ class Table {
 
 
         // create borders
-        let borderLongGeometry = new THREE.BoxGeometry(0.21, 0.21, gameCore.static.bedDepth + gameCore.static.wallBodyDepth + 0.2);
-        let borderShortGeometry = new THREE.BoxGeometry(0.21, 0.21, gameCore.static.bedWidth + gameCore.static.wallBodyDepth + 0.2);
+        let borderLongGeometry = new THREE.BoxGeometry(0.21, 0.21, /*gameCore.static.bedDepth + gameCore.static.wallBodyDepth*/ 3.0431999999999997 + 0.21);
+        let borderShortGeometry = new THREE.BoxGeometry(0.21, 0.21, /*gameCore.static.bedWidth + gameCore.static.wallBodyDepth*/ 1.6716 - 0.42 + 0.21);
         let borderMaterial = new THREE.MeshPhongMaterial({ map: woodTexture });
 
         this.borderTop = new THREE.Mesh(borderShortGeometry, borderMaterial);

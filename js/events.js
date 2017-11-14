@@ -132,7 +132,7 @@ class Events {
                     if (totalVelocity === 0) {
                         window.dispatchEvent(new Event('endTurn'));
                     }
-                    
+
                     this.flipCurrentTurn = true;
                     break;
                 case 1:
