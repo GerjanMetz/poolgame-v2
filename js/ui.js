@@ -23,7 +23,7 @@ class UI {
 
     showEndScreen() {
         this.showMenu();
-        document.getElementById("endScreenTitle").innerHTML = "Winner Winner Chicken Dinner for " + gameCore.winner.name;
+        document.getElementById("endScreenTitle").innerHTML = "Winner Winner Chicken Dinner for " + gameCore.winner.name + "!";
 
         document.getElementById("endScreen").style.display = "initial";
         document.getElementById("endScreen").style.visibility = "visible";

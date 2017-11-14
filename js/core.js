@@ -16,7 +16,7 @@ class Core {
         this.renderer.shadowMap.enabled = true;
 
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight , 0.1, 1000);
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.clock = new THREE.Clock();
 
@@ -41,8 +41,8 @@ class Core {
         light.position.set(1,3,1);
 
         light.castShadow = true;
-        light.shadow.mapSize.width = 2048;
-        light.shadow.mapSize.height = 2048;
+        // light.shadow.mapSize.width = 2048;
+        // light.shadow.mapSize.height = 2048;
 
         this.scene.add(light);
 

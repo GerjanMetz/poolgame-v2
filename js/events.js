@@ -122,6 +122,17 @@ class Events {
             switch (event.detail.number) {
                 case 0:
                     gameCore.world.resetBall();
+
+                    let totalVelocity = 0;
+
+                    for (let j = 0; j < gameCore.static.amountBalls; j++){
+                        totalVelocity += gameCore.world.balls[j].GetVelocity;
+                    }
+
+                    if (totalVelocity === 0) {
+                        window.dispatchEvent(new Event('endTurn'));
+                    }
+                    
                     this.flipCurrentTurn = true;
                     break;
                 case 1:
