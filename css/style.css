@@ -40,6 +40,8 @@
     background-color: saddlebrown;
     color: whitesmoke;
 
+    overflow: hidden;
+
     opacity: 0.6;
 
     border-radius: 25px;
@@ -86,6 +88,8 @@
     color: white;
     padding: 30px;
 
+    overflow: hidden;
+
     background-color: saddlebrown;
     opacity: 0.4;
 }
@@ -98,6 +102,8 @@
     height: 100%;
     padding: 30px;
     color: white;
+
+    overflow: hidden;
 
     background-color: saddlebrown;
     opacity: 0.4;
