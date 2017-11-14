@@ -128,12 +128,14 @@ class Events {
                     for (let j = 0; j < gameCore.static.amountBalls; j++){
                         totalVelocity += gameCore.world.balls[j].GetVelocity;
                     }
+                    
+                    this.flipCurrentTurn = true;
+
 
                     if (totalVelocity === 0) {
                         window.dispatchEvent(new Event('endTurn'));
                     }
 
-                    this.flipCurrentTurn = true;
                     break;
                 case 1:
                 case 2:
