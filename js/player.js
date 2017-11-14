@@ -8,7 +8,9 @@ class Player {
     }
 
     changeName(name) {
-        this.name = name;
+        if (name.trim().length > 0) {
+            this.name = name;
+        }
     }
 
     changeColor(color) {

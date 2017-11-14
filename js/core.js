@@ -25,8 +25,8 @@ class Core {
         this.events = new Events();
         this.utils = new Utils();
         this.static = new Static();
-        this.player1 = new Player("p1");
-        this.player2 = new Player("p2");
+        this.player1 = new Player("Player1");
+        this.player2 = new Player("Player2");
         this.world = new World();
 
         this.ui.showStartScreen();
